@@ -6,17 +6,18 @@ import pytest
 from demo_it_analyze.app import app
 from demo_it_analyze.nlp.ner import Entity
 
-TEST_DB = 'test.db'
+TEST_DB = "test.db"
 
 
 @pytest.fixture
 def client():
-    app.config['TESTING'] = True
-    app.config['WTF_CSRF_ENABLED'] = False
-    app.config['DEBUG'] = False
-    app.config['BASEDIR'] = pathlib.Path(__file__).parent.parent.parent
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
-                                            os.path.join(app.config['BASEDIR'], TEST_DB)
+    app.config["TESTING"] = True
+    app.config["WTF_CSRF_ENABLED"] = False
+    app.config["DEBUG"] = False
+    app.config["BASEDIR"] = pathlib.Path(__file__).parent.parent.parent
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+        app.config["BASEDIR"], TEST_DB
+    )
     yield app.test_client()
 
 
