@@ -23,7 +23,11 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = []
+dependencies = [
+  "flask",
+  "pydantic",
+  "spacy",
+]
 dynamic = ["version"]
 
 [project.urls]
@@ -34,35 +38,30 @@ Source = "https://github.com/unknown/demo-it-analyze"
 [tool.hatch.version]
 path = "demo_it_analyze/__about__.py"
 
-[tool.hatch.envs.default]
-dependencies = [
-  "flask",
-  "pydantic",
-  "spacy",
-]
 [tool.hatch.envs.default.env-vars]
   FLASK_APP = "demo_it_analyze/app.py"
 
-[tool.hatch.envs.dev]
+[tool.hatch.envs.default]
 extra-dependencies = [
   "pytest",
   "pytest-cov",
   "mypy",
 ]
 
-[tool.hatch.envs.dev.scripts]
+[tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=demo_it_analyze --cov=tests {args}"
 no-cov = "cov --no-cov {args}"
 download_ita = "python -m spacy download it_core_news_sm"
 serve = "flask --app demo_it_analyze.app run"
 
 [tool.hatch.envs.train]
+template = "default"
 extra-dependencies = [
   "spacy[cuda-autodetect,transformers,lookups]"
 ]
 
 [tool.hatch.envs.test]
-template = "dev"
+template = "default"
 
 [[tool.hatch.envs.test.matrix]]
 python = ["37", "38", "39", "310", "311"]
@@ -83,7 +82,7 @@ exclude_lines = [
 
 [tool.hatch.envs.style]
 detached = true
-template = "dev"
+template = "default"
 dependencies = [
   "black",
   "ruff >= 0.0.238"
@@ -97,3 +96,12 @@ fmt = [
   "black .",
   "ruff --fix .",
 ]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["demo_it_analyze"]
