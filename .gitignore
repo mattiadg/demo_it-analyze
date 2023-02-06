@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# PyCharm stuff
+.idea
+
+# Ruff stuff
+.ruff_cache
+
+.coverage
