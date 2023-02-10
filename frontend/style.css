@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body div {
+  padding: 20px;
+}
+body div form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+body div form textarea {
+  width: 60%;
+  height: 150px;
+}
+body div form button {
+  width: 50px;
+  height: 25px;
+}/*# sourceMappingURL=style.css.map */
