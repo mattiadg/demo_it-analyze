@@ -27,7 +27,7 @@
 
         console.log(formData);
 
-        fetch('localhost:5001/ner', {
+        fetch('localhost:5001/ner', { //Fetch API cannot load localhost:5001/ner. URL scheme "localhost" is not supported.
             method: "POST",
             body: formData
         })
