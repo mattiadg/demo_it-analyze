@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
 <body>
@@ -18,23 +18,21 @@
     </div>
 </body>
 <script>
-    const myForm = document.getElementById("myForm")
-
-    myForm.addEventListener('submit', function (e) {
+    myForm.onsubmit = async(e) => {
         e.preventDefault();
 
         const formData = new FormData(myForm);
 
         console.log(formData);
 
-        fetch('localhost:5001/ner', { //Fetch API cannot load localhost:5001/ner. URL scheme "localhost" is not supported.
+        fetch('http://127.0.0.1:5000/ner', {
             method: "POST",
             body: formData
         })
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
-    });
+    };
 
 
 
