@@ -1,4 +1,4 @@
-from flask import Flask, request, url_for, render_template
+from flask import Flask, request, render_template
 
 from demo_it_analyze.nlp.ner import compute_ner
 
@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    url_for("static", filename="style.css")
     return render_template("analysis.html")
 
 
