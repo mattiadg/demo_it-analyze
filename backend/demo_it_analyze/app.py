@@ -1,3 +1,5 @@
+import sys
+
 from flask import Flask, request, render_template
 
 from demo_it_analyze.nlp.ner import compute_ner
@@ -12,6 +14,6 @@ def index():
 
 @app.route("/ner", methods=["POST"])
 def ner():
-    text = request.data.decode()
+    text = request.form.get("text")
     entities = compute_ner(text)
     return [ent.json() for ent in entities]
