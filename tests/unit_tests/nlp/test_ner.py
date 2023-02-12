@@ -1,4 +1,4 @@
-from demo_it_analyze.nlp.ner import Entity, compute_ner
+from src.nlp.ner import Entity, compute_ner
 
 
 def test_ner_success():

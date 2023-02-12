@@ -3,8 +3,8 @@ import pathlib
 
 import pytest
 
-from demo_it_analyze.app import app
-from demo_it_analyze.nlp.ner import Entity
+from src.app import app
+from src.nlp.ner import Entity
 
 TEST_DB = "test.db"
 
