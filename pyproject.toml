@@ -52,7 +52,7 @@ extra-dependencies = [
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=demo_it_analyze --cov=tests {args}"
 no-cov = "cov --no-cov {args}"
 download_ita = "python -m spacy download it_core_news_sm"
-serve = "flask --app demo_it_analyze.app run"
+serve = "flask --app src.app run"
 
 [tool.hatch.envs.train]
 template = "default"
@@ -70,7 +70,7 @@ python = ["37", "38", "39", "310", "311"]
 branch = true
 parallel = true
 omit = [
-  "demo_it_analyze/__about__.py",
+  "src/__about__.py",
 ]
 
 [tool.coverage.report]
@@ -104,4 +104,4 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["demo_it_analyze"]
+packages = ["src"]

@@ -1,8 +1,6 @@
-import sys
-
 from flask import Flask, request, render_template
 
-from demo_it_analyze.nlp.ner import compute_ner
+from .nlp.ner import compute_ner
 
 app = Flask(__name__)
 
