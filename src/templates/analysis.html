@@ -12,13 +12,19 @@
 <body>
     <div>
         <form id="myForm">
-            <textarea name="text" type="text"></textarea>
+            <textarea id="fedetopo" name="text" type="text"></textarea>
             <button type="submit">Invia</button>
         </form>
+    </div>
+    <div>
+        <textarea id="myForm2" name="textOutput" type="text"></textarea>
     </div>
 </body>
 <script>
     const myForm = document.getElementById("myForm")
+    const myForm2 = document.getElementById("myForm2")
+    const federatto = document.getElementById("fedetopo")
+
 
     myForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -31,12 +37,31 @@
             body: formData
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+
+                j = 0
+                let out = " "
+                let suca = JSON.parse(data[j])
+                for (i = 0; i < federatto.value.split(" ").length; i++) {
+                    if (i >= suca["start"] && i < suca["end"]) {
+                        out += federatto.value.split(" ")[i].bold()
+                    }
+                    else {
+                        out += federatto.value.split(" ")[i]
+
+                        if (i >= suca["end"]) {
+                            j++
+                            suca = JSON.parse(data[j])
+                        }
+                    }
+                    out += " "
+
+                }
+                myForm2.value = out
+            })
             .catch(err => console.log(err))
     });
-
-
-
 </script>
 
 </html>
