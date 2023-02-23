@@ -12,7 +12,7 @@
 <body>
     <div>
         <form id="myForm">
-            <textarea id="fedetopo" name="text" type="text"></textarea>
+            <textarea id="inputText" name="text" type="text"></textarea>
             <button type="submit">Invia</button>
         </form>
     </div>
@@ -23,7 +23,7 @@
 <script>
     const myForm = document.getElementById("myForm")
     const myForm2 = document.getElementById("myForm2")
-    const federatto = document.getElementById("fedetopo")
+    const textArea = document.getElementById("InputText")
 
 
     myForm.addEventListener('submit', function (e) {
@@ -42,17 +42,17 @@
 
                 j = 0
                 let out = " "
-                let suca = JSON.parse(data[j])
-                for (i = 0; i < federatto.value.split(" ").length; i++) {
-                    if (i >= suca["start"] && i < suca["end"]) {
-                        out += federatto.value.split(" ")[i].bold()
+                let currObj = JSON.parse(data[j])
+                for (i = 0; i < textArea.value.split(" ").length; i++) {
+                    if (i >= currObj["start"] && i < currObj["end"]) {
+                        out += textArea.value.split(" ")[i].bold()
                     }
                     else {
-                        out += federatto.value.split(" ")[i]
+                        out += textArea.value.split(" ")[i]
 
-                        if (i >= suca["end"]) {
+                        if (i >= currObj["end"]) {
                             j++
-                            suca = JSON.parse(data[j])
+                            currObj = JSON.parse(data[j])
                         }
                     }
                     out += " "
