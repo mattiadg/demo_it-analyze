@@ -13,8 +13,8 @@
 
 ## Introduction
 
-`demo-it-analyze` is a toy package attached to an article to show python automation tools
-for creating environments and building a package.
+`demo-it-analyze` is a toy package attached to the Medium article **Without Further Ado: Automate Dev Environments and Build**
+to show python automation tools for creating environments and building a package.
 ## Installation
 
 `demo-it-analyze` is distributed via pypi and can be installed with
